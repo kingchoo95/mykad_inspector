@@ -11,29 +11,80 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## MyKadInspector
+MyKadInspector is a Dart/Flutter package designed to extract and analyze information from Malaysian identity card (MyKad) numbers. It provides details such as the date of birth, age, gender, and place of birth based on the MyKad number.
 
 ## Features
+**Extract MyKad Information** Retrieve details such as date of birth, age, gender, and place of birth from a valid MyKad number.
+**IC Number Formatting** Automatically format MyKad numbers to the standard xxxxxx-xx-xxxx format.
+**Validation**  Validate MyKad numbers based on their structure and content.
+**No internet connection required**
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Installing
+You should add the following to your pubspec.yaml file:
+
+dependencies:
+    mykad_inspector: ^0.0.1
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To start, import the dependency in your code:
 
-## Usage
+    import 'package:mykad_inspector/model/MyKadInfo.dart';
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Next, to get IC Number Information you can use the following code :
 
-```dart
-const like = 'sample';
-```
+    void main() async {
+        final myKadInspector = MyKadInspector();
 
-## Additional information
+        // IC Number can format in xxxxxx-xx-xxxx or xxxxxxxxxxxx
+        final myKadInfo = await myKadInspector.extractICDetails('950130-03-2947');
+        
+        if (myKadInfo != null) {
+            print('Age: ${myKadInfo.age}');
+            print('Date of Birth: ${myKadInfo.dateOfBirth}');
+            print('Gender: ${myKadInfo.gender}');
+            print('Place of Birth: ${myKadInfo.placeOfBirth}');
+            print('Formatted IC Number: ${myKadInfo.formattedIcNumber}');
+            print('IC Number: ${myKadInfo.icNumber}');
+        } else {
+            print('Invalid MyKad number');
+        }
+    }
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+MyKadInfo Model
+
+    class MyKadInfo {
+        final String icNumber;
+        final String formattedIcNumber;
+        final String icNumber;
+        final DateTime dateOfBirth;
+        final int age;
+        final String placeOfBirth;
+        final String gender;
+    
+        MyKadInfo({
+            required this.icNumber,
+            required this.formattedIcNumber,
+            required this.icNumber,
+            required this.dateOfBirth,
+            required this.age,
+            required this.placeOfBirth,
+            required this.gender,
+        });
+    }
+
+Example Output
+
+    Age: 29
+    Date of Birth: 1995-01-30 00:00:00.000
+    Gender: M
+    Place of Birth: Kelantan
+    Formatted IC Number: 950130-03-2947
+    IC Number: 950130032947
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Disclaimer
+This package is intended for educational and informational purposes only. It should not be used in production systems without proper testing and validation.
