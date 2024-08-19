@@ -24,8 +24,7 @@ class MyKadInspector {
     String substringICnumberGender = sanitizedIC.substring(11, 12);
 
     // check DOB correct
-    MyKadUserAgeInfo mykadUserAgeInfo =
-        _findICNumberDOB(substringICNumberDOB);
+    MyKadUserAgeInfo mykadUserAgeInfo = _findICNumberDOB(substringICNumberDOB);
     // check gender
     String gender = _findICNumberGender(int.parse(substringICnumberGender));
 
@@ -44,9 +43,7 @@ class MyKadInspector {
 
   // load place_of_birth.json
   Future<Map<String, String>> _loadICLocations() async {
-    final String response =
-        await rootBundle.loadString('assets/place_of_birth.json');
-    final Map<String, dynamic> data = json.decode(response);
+    final Map<String, dynamic> data = json.decode(_placeOfBirthJson);
     return data.map((key, value) => MapEntry(key, value.toString()));
   }
 
@@ -73,7 +70,7 @@ class MyKadInspector {
 
     int getReformatYear = now.year - currentAge;
 
-    DateTime dob = DateTime(getReformatYear, reformatMonth,reformatDay);
+    DateTime dob = DateTime(getReformatYear, reformatMonth, reformatDay);
 
     return MyKadUserAgeInfo(age: currentAge, dateOfBirth: dob);
   }
@@ -110,4 +107,108 @@ class MyKadInspector {
 
     return reformatICNumber;
   }
+
+  final String _placeOfBirthJson = '''{
+    "00": "—",
+    "01": "Johor",
+    "02": "Kedah",
+    "03": "Kelantan",
+    "04": "Malacca",
+    "05": "Negeri Sembilan",
+    "06": "Pahang",
+    "07": "Penang",
+    "08": "Perak",
+    "09": "Perlis",
+    "10": "Selangor",
+    "11": "Terengganu",
+    "12": "Sabah",
+    "13": "Sarawak",
+    "14": "Federal Territory of Kuala Lumpur",
+    "15": "Federal Territory of Labuan",
+    "16": "Federal Territory of Putrajaya",
+    "17": "—",
+    "18": "—",
+    "19": "—",
+    "20": "—",
+    "21": "Johor",
+    "22": "Johor",
+    "23": "Johor",
+    "24": "Johor",
+    "25": "Kedah",
+    "26": "Kedah",
+    "27": "Kedah",
+    "28": "Kelantan",
+    "29": "Kelantan",
+    "30": "Malacca",
+    "31": "Negeri Sembilan",
+    "32": "Pahang",
+    "33": "Pahang",
+    "34": "Penang",
+    "35": "Penang",
+    "36": "Perak",
+    "37": "Perak",
+    "38": "Perak",
+    "39": "Perak",
+    "40": "Perlis",
+    "41": "Selangor",
+    "42": "Selangor",
+    "43": "Selangor",
+    "44": "Selangor",
+    "45": "Terengganu",
+    "46": "Terengganu",
+    "47": "Sabah",
+    "48": "Sabah",
+    "49": "Sabah",
+    "50": "Sarawak",
+    "51": "Sarawak",
+    "52": "Sarawak",
+    "53": "Sarawak",
+    "54": "Federal Territory of Kuala Lumpur",
+    "55": "Federal Territory of Kuala Lumpur",
+    "56": "Federal Territory of Kuala Lumpur",
+    "57": "Federal Territory of Kuala Lumpur",
+    "58": "Federal Territory of Labuan",
+    "59": "Negeri Sembilan",
+    "PB": "Place of birth (outside Malaysia / abroad)",
+    "60": "Brunei",
+    "61": "Indonesia",
+    "62": "Cambodia / Democratic Kampuchea / Kampuchea",
+    "63": "Laos",
+    "64": "Myanmar",
+    "65": "Philippines",
+    "66": "Singapore",
+    "67": "Thailand",
+    "68": "Vietnam",
+    "69": "—",
+    "70": "—",
+    "71": "A person born outside Malaysia prior to 2001",
+    "72": "A person born outside Malaysia prior to 2001",
+    "73": "—",
+    "74": "China",
+    "75": "India",
+    "76": "Pakistan",
+    "77": "Saudi Arabia",
+    "78": "Sri Lanka",
+    "79": "Bangladesh",
+    "80": "—",
+    "81": "—",
+    "82": "Unknown state",
+    "83": "Asia-Pacific",
+    "84": "South America",
+    "85": "Africa",
+    "86": "Europe",
+    "87": "Britain / Great Britain / Ireland",
+    "88": "Middle East",
+    "89": "Far East",
+    "90": "Caribbean",
+    "91": "North America",
+    "92": "Soviet Union / USSR",
+    "93": "Afghanistan / Andorra / Antarctica / Antigua and Barbuda / Azerbaijan / Benin / Bermuda / Bhutan / Bora Bora / Bouvet Island / British Indian Ocean Territory / Burkina Faso / Cape Verde / Cayman Islands / Comoros / Dahomey / Equatorial Guinea / Falkland Islands / French Southern Territories / Gibraltar / Guinea-Bissau / Hong Kong / Iceland / Ivory Coast / Kazakhstan / Kiribati / Kyrgyzstan / Lesotho / Libya / Liechtenstein / Macau / Madagascar / Maghribi / Malagasy / Maldives / Mauritius / Mongolia / Montserrat / Nauru / Nepal / Northern Marianas Islands / Outer Mongolia / Palau / Palestine / Pitcairn Islands / Saint Helena / Saint Lucia / Saint Vincent and the Grenadines / Samoa / San Marino / São Tomé and Príncipe / Seychelles / Solomon Islands / Svalbard and Jan Mayen Islands / Tajikistan / Turkmenistan / Tuvalu / Upper Volta / Uzbekistan / Vanuatu / Vatican City / Virgin Islands (British) / Western Samoa / Yugoslavia",
+    "94": "—",
+    "95": "—",
+    "96": "—",
+    "97": "—",
+    "98": "Stateless / Stateless Person Article 1/1954",
+    "99": "Mecca / Neutral Zone / No Information / Refugee / Refugee Article 1/1951 / United Nations Specialized Agency / United Nations Organization / Unspecified Nationality"
+  }''';
 }

@@ -18,5 +18,5 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-   assets:
-     - assets/place_of_birth.json
+#   assets:
+#     - place_of_birth.json
