@@ -16,8 +16,11 @@ MyKadInspector is a Dart/Flutter package designed to extract and analyze informa
 
 ## Features
 **Extract MyKad Information** Retrieve details such as date of birth, age, gender, and place of birth from a valid MyKad number.
+
 **IC Number Formatting** Automatically format MyKad numbers to the standard xxxxxx-xx-xxxx format.
+
 **Validation**  Validate MyKad numbers based on their structure and content.
+
 **No internet connection required**
 
 ## Installing
@@ -30,16 +33,18 @@ dependencies:
 
 To start, import the dependency in your code:
 
-    import 'package:mykad_inspector/model/MyKadInfo.dart';
+    import 'package:mykad_inspector/mykad_inspector.dart';
 
 Next, to get IC Number Information you can use the following code :
 
     void main() async {
+
+        // Instantiate MyKadInspector object 
         final myKadInspector = MyKadInspector();
 
         // IC Number can format in xxxxxx-xx-xxxx or xxxxxxxxxxxx
         final myKadInfo = await myKadInspector.extractICDetails('950130-03-2947');
-        
+
         if (myKadInfo != null) {
             print('Age: ${myKadInfo.age}');
             print('Date of Birth: ${myKadInfo.dateOfBirth}');
@@ -48,6 +53,7 @@ Next, to get IC Number Information you can use the following code :
             print('Formatted IC Number: ${myKadInfo.formattedIcNumber}');
             print('IC Number: ${myKadInfo.icNumber}');
         } else {
+            // return null if invalid IC Number format
             print('Invalid MyKad number');
         }
     }
