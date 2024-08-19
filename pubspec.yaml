@@ -1,0 +1,22 @@
+name: mykad_inspector
+description: "MyKadValidator is a Flutter package designed to parse and validate Malaysia's IC numbers, providing information such as the owner's gender, date of birth, age and more!"
+version: 0.0.1
+repository: 'https://github.com/kingchoo95/mykad_inspector'
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+# The following section is specific to Flutter packages.
+flutter:
+   assets:
+     - assets/place_of_birth.json
